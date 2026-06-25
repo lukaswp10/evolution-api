@@ -283,10 +283,9 @@ export class BaileysStartupService extends ChannelStartupService {
     return this.stateConnection;
   }
 
-  public async logoutInstance() {
-    // Mark instance as deleting to prevent reconnection attempts.
-    this.isDeleting = true;
-    this.endSession = true;
+  public async logoutInstance(isBeingDeleted = false) {
+    this.isDeleting = isBeingDeleted;
+    this.endSession = isBeingDeleted;
 
     this.messageProcessor.onDestroy();
 
