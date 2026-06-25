@@ -465,7 +465,7 @@ export class InstanceController {
 
       if (instance.state === 'connecting' || instance.state === 'open') {
         try {
-          await this.logout({ instanceName });
+          await this.waMonitor.waInstances[instanceName]?.logoutInstance(true);
         } catch (error) {
           // logout can throw "Connection Closed" when the underlying Baileys
           // socket is already dead but waInstances[name] still exists. We
