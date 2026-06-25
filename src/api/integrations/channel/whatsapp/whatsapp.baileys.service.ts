@@ -285,7 +285,7 @@ export class BaileysStartupService extends ChannelStartupService {
 
   public async logoutInstance(isBeingDeleted = false) {
     this.isDeleting = isBeingDeleted;
-    this.endSession = isBeingDeleted;
+    this.endSession = true;
 
     this.messageProcessor.onDestroy();
 
